@@ -1,5 +1,5 @@
 title: Auto Boosts
-description: This mod will automatically equip Strength, Magic, Defense, and AP boosts to Sora! 
+description: This mod will automatically equip Strength, Magic, Defense, and AP boosts to Sora! Should follow the vanilla rules, so when you've hit the limit of usable boosts, it'll stay in your inventory.
 assets:
 #Lua Scripts
 - name: scripts/F266B00B autoboosts.lua
