@@ -34,8 +34,8 @@ function Events(M,B,E) --Check for Map, Btl, and Evt
 end
 
 function Cheats()
-	if ReadByte(Save+0x3666) > 0 and ReadByte(Save+0x24F9) < 100 then -- If a Power Boosts and Boosts given is less than 100, then 
-		WriteByte(Slot1+0x188, ReadByte(Slot1+0x188) + ReadByte(Save+0x3666)) -- Add this many power boosts to Sora
+	if ReadByte(Save+0x3666) > 0 and ReadByte(Save+0x24F9) < 100 then -- If a Power Boost is obtained and # of Boosts given is less than 100
+		WriteByte(Slot1+0x188, ReadByte(Slot1+0x188) + ReadByte(Save+0x3666)) -- Add this many power boosts to Sora (in case of multiple)
 		WriteByte(Save+0x24F9, ReadByte(Save+0x24F9) + ReadByte(Save+0x3666)) -- Add as many Power Boosts to the total counter
 		WriteByte(Save+0x3666, 0) -- Set the amount of Power Boosts to 0
 	elseif ReadByte(Save+0x3667) > 0 and ReadByte(Save+0x24FA) < 100 then -- Magic Boosts
