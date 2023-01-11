@@ -7,7 +7,7 @@
 - id: 0x39E0
   en: 'Increases Magic by 1.'
 - id: 0x39E1
-  en: '{:color #FF800080}Defense Increased!'
+  en: '{:color #00FF0080}Defense Increased!'
 - id: 0x39E2
   en: 'Increases Defense by 1.'
 - id: 0x39E3
