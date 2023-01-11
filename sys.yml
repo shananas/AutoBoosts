@@ -1,0 +1,16 @@
+- id: 0x39DD
+  en: '{:color #FF000080}Strength Increased!'
+- id: 0x39DE
+  en: 'Increases Strength by 1.'
+- id: 0x39DF
+  en: '{:color #FF00FF80}Magic Increased!'
+- id: 0x39E0
+  en: 'Increases Magic by 1.'
+- id: 0x39E1
+  en: '{:color #FF800080}Defense Increased!'
+- id: 0x39E2
+  en: 'Increases Defense by 1.'
+- id: 0x39E3
+  en: '{:color #00FFFF80}AP Increased!'
+- id: 0x39E4
+  en: 'Increases AP by 1.'
