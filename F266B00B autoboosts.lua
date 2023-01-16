@@ -36,25 +36,23 @@ function Events(M,B,E) --Check for Map, Btl, and Evt
 end
 
 function Cheats()
-	if ReadShort(Now+0) ~= 0x0110 and ReadShort(Now+8) ~= 0x34 then
-		if ReadShort(Now+0) ~= 0x080E then
-			if ReadByte(Save+0x3666) > 0 and ReadByte(Save+0x24F9) < 100 and ReadByte(Cntrl) == 0 then -- If a Power Boost is obtained and # of Boosts given is less than 100
-				WriteByte(Slot1+0x188, ReadByte(Slot1+0x188) + ReadByte(Save+0x3666)) -- Add this many power boosts to Sora (in case of multiple)
-				WriteByte(Save+0x24F9, ReadByte(Save+0x24F9) + ReadByte(Save+0x3666)) -- Add as many Power Boosts to the total counter
-				WriteByte(Save+0x3666, 0) -- Set the amount of Power Boosts to 0
-			elseif ReadByte(Save+0x3667) > 0 and ReadByte(Save+0x24FA) < 100 and ReadByte(Cntrl) == 0 then -- Magic Boosts
-				WriteByte(Slot1+0x18A, ReadByte(Slot1+0x18A) + ReadByte(Save+0x3667))
-				WriteByte(Save+0x24FA, ReadByte(Save+0x24FA) + ReadByte(Save+0x3667))
-				WriteByte(Save+0x3667, 0)
-			elseif ReadByte(Save+0x3668) > 0 and ReadByte(Save+0x24FB) < 100 and ReadByte(Cntrl) == 0 then -- Defense Boosts
-				WriteByte(Slot1+0x18C, ReadByte(Slot1+0x18C) + ReadByte(Save+0x3668))
-				WriteByte(Save+0x24FB, ReadByte(Save+0x24FB) + ReadByte(Save+0x3668))
-				WriteByte(Save+0x3668, 0)
-			elseif ReadByte(Save+0x3669) > 0 and ReadByte(Save+0x24F8) < 100 and ReadByte(Cntrl) == 0 then -- AP Boosts
-				WriteByte(Slot1+0x18E, ReadByte(Slot1+0x18E) + ReadByte(Save+0x3669))
-				WriteByte(Save+0x24F8, ReadByte(Save+0x24F8) + ReadByte(Save+0x3669))
-				WriteByte(Save+0x3669, 0)
-			end
+	if ReadShort(Now+0) ~= 0x0110 and ReadShort(Now+0) ~= 0x080E then
+		if ReadByte(Save+0x3666) > 0 and ReadByte(Save+0x24F9) < 100 and ReadByte(Cntrl) == 0 then -- If a Power Boost is obtained and # of Boosts given is less than 100
+			WriteByte(Slot1+0x188, ReadByte(Slot1+0x188) + ReadByte(Save+0x3666)) -- Add this many power boosts to Sora (in case of multiple)
+			WriteByte(Save+0x24F9, ReadByte(Save+0x24F9) + ReadByte(Save+0x3666)) -- Add as many Power Boosts to the total counter
+			WriteByte(Save+0x3666, 0) -- Set the amount of Power Boosts to 0
+		elseif ReadByte(Save+0x3667) > 0 and ReadByte(Save+0x24FA) < 100 and ReadByte(Cntrl) == 0 then -- Magic Boosts
+			WriteByte(Slot1+0x18A, ReadByte(Slot1+0x18A) + ReadByte(Save+0x3667))
+			WriteByte(Save+0x24FA, ReadByte(Save+0x24FA) + ReadByte(Save+0x3667))
+			WriteByte(Save+0x3667, 0)
+		elseif ReadByte(Save+0x3668) > 0 and ReadByte(Save+0x24FB) < 100 and ReadByte(Cntrl) == 0 then -- Defense Boosts
+			WriteByte(Slot1+0x18C, ReadByte(Slot1+0x18C) + ReadByte(Save+0x3668))
+			WriteByte(Save+0x24FB, ReadByte(Save+0x24FB) + ReadByte(Save+0x3668))
+			WriteByte(Save+0x3668, 0)
+		elseif ReadByte(Save+0x3669) > 0 and ReadByte(Save+0x24F8) < 100 and ReadByte(Cntrl) == 0 then -- AP Boosts
+			WriteByte(Slot1+0x18E, ReadByte(Slot1+0x18E) + ReadByte(Save+0x3669))
+			WriteByte(Save+0x24F8, ReadByte(Save+0x24F8) + ReadByte(Save+0x3669))
+			WriteByte(Save+0x3669, 0)
 		end
 	end
 end
