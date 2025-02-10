@@ -1,59 +1,43 @@
---Updated for v1.0.0.9 Steam and Epic Global
+--Updated for v1.0.0.10 Steam and Epic Global
 
 local canExecute = false
 
 function _OnFrame()
-	if canExecute == true then
-		World = ReadByte(Now + 0x00)
-		Room = ReadByte(Now + 0x01)
-		Place = ReadShort(Now + 0x00)
-		Door = ReadShort(Now + 0x02)
-		Map = ReadShort(Now + 0x04)
-		Btl = ReadShort(Now + 0x06)
-		Evt = ReadShort(Now + 0x08)
-		Cheats()
+	if canExecute == false then
+		GetVersion()
+		return
 	end
+	Cheats()
 end
 
 function _OnInit()
+canExecute = false
+end
+
+function GetVersion() --Define anchor addresses
 	if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then --PCSX2
 		canExecute = true
 		Platform = 'PS2'
         Now = 0x032BAE0 --Current Location
         Save = 0x032BB30 --Save File
-        Obj0 = 0x1C94100 --00objentry.bin
 		Cntrl = 0x1D48DB8
-        Sys3 = 0x1CCB300 --03system.bin
-        Btl0 = 0x1CE5D80 --00battle.bin
         Slot1 = 0x1C6C750 --Unit Slot 1
 		print('Emulator')
 	elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then --PC
 		canExecute = true
-		if ReadByte(0x566A8E) == 0xFF then --EGS Global
+		if ReadString(0x9A9330,4) == 'KH2J' then --EGS Global
 			Platform = 'PC-Epic'
 			Now = 0x0716DF8
-			Save = 0x09A92F0
-			Obj0Pointer = 0x2A24A70
-			Sys3Pointer = 0x2AE5890
-			Btl0Pointer = 0x2AE5898
-			Cntrl = 0x2A16C28
-			Obj0 = ReadLong(Obj0Pointer)
-			Sys3 = ReadLong(Sys3Pointer)
-			Btl0 = ReadLong(Btl0Pointer)
-			Slot1 = 0x2A22FD8
+			Save = 0x09A9330
+			Cntrl = 0x2A16C68
+			Slot1 = 0x2A23018
 			ConsolePrint('Epic Games Global')
-		elseif ReadByte(0x56668E) == 0xFF then --Steam Global
+		elseif ReadString(0x9A98B0,4) == 'KH2J' then --Steam Global
 			Platform = 'PC-Steam'
 			Now = 0x0717008
-			Save = 0x09A9830
-			Obj0Pointer = 0x2A24FB0
-			Sys3Pointer = 0x2AE5DD0
-			Btl0Pointer = 0x2AE5DD8
-			Cntrl = 0x2A17168
-			Obj0 = ReadLong(Obj0Pointer)
-			Sys3 = ReadLong(Sys3Pointer)
-			Btl0 = ReadLong(Btl0Pointer)
-			Slot1 = 0x2A23518
+			Save = 0x09A98B0
+			Cntrl = 0x2A171E8
+			Slot1 = 0x2A23598
 			ConsolePrint('Steam Global')
 		else
 			canExecute = false
@@ -62,10 +46,6 @@ function _OnInit()
 	else
 		ConsolePrint('KH2 not detected, not running script')
 	end
-end
-
-function Events(M,B,E) --Check for Map, Btl, and Evt
-    return ((Map == M or not M) and (Btl == B or not B) and (Evt == E or not E))
 end
 
 function Cheats()
