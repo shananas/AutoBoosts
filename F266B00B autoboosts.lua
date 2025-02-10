@@ -10,10 +10,6 @@ function _OnFrame()
 	Cheats()
 end
 
-function _OnInit()
-canExecute = false
-end
-
 function GetVersion() --Define anchor addresses
 	if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then --PCSX2
 		canExecute = true
