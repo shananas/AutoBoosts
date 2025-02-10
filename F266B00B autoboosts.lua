@@ -1,13 +1,15 @@
 --Updated for v1.0.0.10 Steam and Epic Global
 
-local canExecute = false
-
 function _OnFrame()
 	if canExecute == false then
 		GetVersion()
 		return
 	end
 	Cheats()
+end
+
+function _OnInit()
+canExecute = false
 end
 
 function GetVersion() --Define anchor addresses
