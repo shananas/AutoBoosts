@@ -16,10 +16,10 @@ function GetVersion() --Define anchor addresses
 	if (GAME_ID == 0xF266B00B or GAME_ID == 0xFAF99301) and ENGINE_TYPE == "ENGINE" then --PCSX2
 		canExecute = true
 		Platform = 'PS2'
-        	Now = 0x032BAE0 --Current Location
-        	Save = 0x032BB30 --Save File
+        Now = 0x032BAE0 --Current Location
+        Save = 0x032BB30 --Save File
 		Cntrl = 0x1D48DB8
-        	Slot1 = 0x1C6C750 --Unit Slot 1
+        Slot1 = 0x1C6C750 --Unit Slot 1
 		print('Emulator')
 	elseif GAME_ID == 0x431219CC and ENGINE_TYPE == 'BACKEND' then --PC
 		canExecute = true
